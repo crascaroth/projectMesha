@@ -1,16 +1,27 @@
-import { useContext } from 'react'
-import Context from '../../GlobalState/Context'
-
+import { useContext, useState } from "react";
+import Context from "../../GlobalState/Context";
+import { goToPage } from "../../Router/Walker";
+import { useHistory } from "react-router-dom";
 
 const MainPage = () => {
+  const history = useHistory();
+  const { states, setters, requests } = useContext(Context);
+  const [nameUser, setNameUser] = useState("");
+  
+  const onChange = (event) => setNameUser(event.target.value);
 
-       const { states, setters, requests } = useContext(Context)
+  return (
+    <div>
+      <input
+        placeholder="Escreva Seu Nome"
+        value={nameUser}
+        onChange={onChange}
+      />
+      <button onClick={() => goToPage(history, `/${nameUser}/registrar`)}>
+        Registrar
+      </button>
+    </div>
+  );
+};
 
-    return (
-        <div>
-            {states.teste}
-        </div>
-    )
-}
-
-export default MainPage
+export default MainPage;

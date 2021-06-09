@@ -1,6 +1,7 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import MainPage from '../Pages/MainPage/MainPage'
+import FormNewUser from "../Pages/FormNewUser/FormNewUser"
 
 
 export default function Router() {
@@ -13,13 +14,11 @@ export default function Router() {
                     <MainPage/>
                 </Route>
                 
-                <Route exact path="/1">
-                    
+                <Route exact path="/:NameUser/registrar">
+                    <FormNewUser/>
                 </Route>
 
-                <Route exact path="/2">
-                    
-                </Route>
+                
 
             </Switch>
         </BrowserRouter>
