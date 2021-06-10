@@ -19,7 +19,6 @@ const FormNewUser = () => {
   let arrayChecked = [];
 
   const FunctionChecked = (event) => {
-
     if (event.target.checked == true) {
       totalChecked++;
       arrayChecked.push(event.target.value);
@@ -36,17 +35,15 @@ const FormNewUser = () => {
           if (ch.checked === false) {
             ch.disabled = true;
           }
-          
         });
     } else {
-      let checkboxes = document.querySelectorAll("input[type=checkbox]");      
+      let checkboxes = document.querySelectorAll("input[type=checkbox]");
       let selectedCboxes = Array.prototype.slice
         .call(checkboxes)
         .filter((ch) => {
           ch.disabled = false;
         });
     }
-    
   };
   //    Nome: campo texto com 100 caracteres, obrigatório
   //    Email: campo texto com 100 caracteres, com validação de email, obrigatório
@@ -120,7 +117,19 @@ const FormNewUser = () => {
         onClick={FunctionChecked}
       ></input>
 
-      <button onClick={() => console.log(info)}>Enviar</button>
+      <button
+        onClick={() =>
+          requests.signupUser({
+            nome: info.nome,
+            email: info.email,
+            cpf: info.cpf,
+            celular: info.celular,
+            conhecimentos: arrayChecked,
+          })
+        }
+      >
+        Enviar
+      </button>
     </div>
   );
 };
