@@ -3,32 +3,35 @@
 POST http://localhost:3003/user/signup
 Content-Type: application/json
 
-{
-    "login":"Marcelo@Vacinado.com",
-    "password":"123456"
+{    
+    "nome": "Douglão",
+    "email": "douglas@show.com",
+    "cpf":"993.840.150-32",
+    "celular": "67993321817",
+    "conhecimentos": ["Git"]
 }
 
-### Login
-# @name Login
-POST http://localhost:3003/user/login
-Content-Type: application/json
+# ### Login
+# # @name Login
+# POST http://localhost:3003/user/login
+# Content-Type: application/json
 
-{
-    "login":"Marcelo@Vacinado.com",
-    "password":"123456"
-}
+# {
+#     "login":"Marcelo@Vacinado.com",
+#     "password":"123456"
+# }
 
-### insert Image
-POST http://localhost:3003/image/insert/{{Login.response.body.token}}
-Content-Type: application/json
+# ### insert Image
+# POST http://localhost:3003/image/insert/{{Login.response.body.token}}
+# Content-Type: application/json
 
-{
-    "subtitle": "Aleatória",
-    "URL": "stringzao"
-}
+# {
+#     "subtitle": "Aleatória",
+#     "URL": "stringzao"
+# }
 
-@id=3b40fd34-c820-4d77-b6aa-10d48b4e62c9
+# @id=3b40fd34-c820-4d77-b6aa-10d48b4e62c9
 
-### getImageById
-GET http://localhost:3003/image/{{Login.response.body.token}}/{{id}}
+# ### getImageById
+# GET http://localhost:3003/image/{{Login.response.body.token}}/{{id}}
 

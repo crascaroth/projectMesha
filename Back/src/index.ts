@@ -4,7 +4,15 @@ import dotenv from "dotenv"
 
 
 import server from "./Services/Server"
+import { userRouter } from "./Routes/userRouter"
 
-server()
+dotenv.config()
 const app: Express = express()
-// app.use("/user", userRouter);
+app.use(express.json())
+app.use(cors())
+
+app.listen(3003, () => {
+    console.log("Server running on port 3003")
+})
+
+app.use("/user", userRouter);
