@@ -15,6 +15,39 @@ const FormNewUser = () => {
     });
   };
 
+  let totalChecked = 0;
+  let arrayChecked = [];
+
+  const FunctionChecked = (event) => {
+
+    if (event.target.checked == true) {
+      totalChecked++;
+      arrayChecked.push(event.target.value);
+    } else {
+      totalChecked = totalChecked - 1;
+      arrayChecked.pop();
+    }
+
+    if (totalChecked >= 3) {
+      let checkboxes = document.querySelectorAll("input[type=checkbox]");
+      let selectedCboxes = Array.prototype.slice
+        .call(checkboxes)
+        .filter((ch) => {
+          if (ch.checked === false) {
+            ch.disabled = true;
+          }
+          
+        });
+    } else {
+      let checkboxes = document.querySelectorAll("input[type=checkbox]");      
+      let selectedCboxes = Array.prototype.slice
+        .call(checkboxes)
+        .filter((ch) => {
+          ch.disabled = false;
+        });
+    }
+    
+  };
   //    Nome: campo texto com 100 caracteres, obrigatório
   //    Email: campo texto com 100 caracteres, com validação de email, obrigatório
   //    CPF: campo texto com formatação de cpf (000.000.000-00) e validação com 14 caracteres, obrigatório.
@@ -37,15 +70,55 @@ const FormNewUser = () => {
       <input name="celular" onChange={onChange} value={info.celular}></input>
 
       <label>Conhecimentos:</label>
-      <label>Git:</label><input type="checkbox"></input>
-      <label>React:</label><input type="checkbox"></input>
-      <label>PHP:</label><input type="checkbox"></input>
-      <label>NodeJS:</label><input type="checkbox"></input>
-      <label>DevOps:</label><input type="checkbox"></input>
-      <label>Banco de Dados:</label><input type="checkbox"></input>
-      <label>TypeScript:</label><input type="checkbox"></input>
-
-
+      <label>Git:</label>
+      <input
+        type="checkbox"
+        value="Git"
+        Id="myCheck"
+        onClick={FunctionChecked}
+      ></input>
+      <label>React:</label>
+      <input
+        type="checkbox"
+        value="React"
+        Id="myCheck"
+        onClick={FunctionChecked}
+      ></input>
+      <label>PHP:</label>
+      <input
+        type="checkbox"
+        value="PHP"
+        Id="myCheck"
+        onClick={FunctionChecked}
+      ></input>
+      <label>NodeJS:</label>
+      <input
+        type="checkbox"
+        value="NodeJS"
+        Id="myCheck"
+        onClick={FunctionChecked}
+      ></input>
+      <label>DevOps:</label>
+      <input
+        type="checkbox"
+        value="DevOps"
+        Id="myCheck"
+        onClick={FunctionChecked}
+      ></input>
+      <label>Banco de Dados:</label>
+      <input
+        type="checkbox"
+        value="Banco de Dados"
+        Id="myCheck"
+        onClick={FunctionChecked}
+      ></input>
+      <label>TypeScript:</label>
+      <input
+        type="checkbox"
+        value="TypeScript"
+        Id="myCheck"
+        onClick={FunctionChecked}
+      ></input>
 
       <button onClick={() => console.log(info)}>Enviar</button>
     </div>
